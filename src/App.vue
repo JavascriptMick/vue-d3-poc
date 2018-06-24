@@ -5,7 +5,21 @@
     <img src="./assets/d3-black.png" class="logo-img">
     <HelloWorld msg="Vue.js + TypeScript + D3 Proof of concept"/>
     <!-- <ResponsiveAreaChart stuff="propsthing" /> -->
-    <ArrayPropsExample test1="hello" :test2="testArray"/>
+    <h1>Both specified</h1>
+    <ArrayPropsExample1 test1="Overrided Prop" :test2="['o', 'v', 'e']"/>
+    
+    <h1>Test1 (string) specified</h1>
+    <ArrayPropsExample1 test1="Overrided Prop"/>
+    
+    <h1>Test2(Array) specified</h1>
+    <ArrayPropsExample1 :test2="['o', 'v', 'e']"/>
+    
+    <h1>None specified</h1>
+    <ArrayPropsExample1/>
+
+    <h1>Violate the type contract (array of strings in Test2)</h1>
+    <ArrayPropsExample1 :test2="[1, 2, 3]"/>
+    
   </div>
 </template>
 
@@ -13,17 +27,23 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
 import ResponsiveAreaChart from './components/ResponsiveAreaChart.vue';
-import ArrayPropsExample from './components/ArrayPropsExample.vue';
+import ArrayPropsExample1 from './components/ArrayPropsExample1.vue';
+// import ArrayPropsExample2 from './components/ArrayPropsExample2.vue';
+// import ArrayPropsExample3 from './components/ArrayPropsExample3.vue';
+// import ArrayPropsExample4 from './components/ArrayPropsExample4.vue';
 
 @Component({
   components: {
     HelloWorld,
     ResponsiveAreaChart,
-    ArrayPropsExample
+    ArrayPropsExample1,
+    // ArrayPropsExample2,
+    // ArrayPropsExample3,
+    // ArrayPropsExample4
   },
 })
 export default class App extends Vue {
-  private testArray: string[] = ['a', 'b', 'c'];
+  // private testArray: string[] = ['a', 'b', 'c'];
 }
 </script>
 
