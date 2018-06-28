@@ -5,7 +5,7 @@
 <script lang="ts">
 // Attempting to follow the example here... https://github.com/vuejs/vue-class-component/blob/master/example/App.vue
 // the test1 and test2 class members are required to prevent Lint errors
-// the example uses the 'propVariable' name in the props and then 'variable' in the class member, 
+// the example uses the 'propVariable' name in the props and then 'variable' in the class member,
 // so I have followed this example even though it looks stoopid to me
 
 import Vue from 'vue';

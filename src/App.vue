@@ -4,21 +4,38 @@
     <img src="./assets/typescript.svg" class="logo-img">
     <img src="./assets/d3-black.png" class="logo-img">
     <HelloWorld msg="Vue.js + TypeScript + D3 Proof of concept"/>
-    <!-- <ResponsiveAreaChart stuff="propsthing" /> -->
-    <h1>Both specified</h1>
-    <ArrayPropsExample1 test1="Overrided Prop" :test2="['o', 'v', 'e']"/>
     
-    <h1>Test1 (string) specified</h1>
-    <ArrayPropsExample1 test1="Overrided Prop"/>
-    
-    <h1>Test2(Array) specified</h1>
-    <ArrayPropsExample1 :test2="['o', 'v', 'e']"/>
-    
-    <h1>None specified</h1>
-    <ArrayPropsExample1/>
+    <h1>Typescript + vue-class-component + vue-property-decorator</h1>
+    <responsive-area-chart
+      @select="onSelect"
+      :data="data"
+      :ceil="80"
+      class="area-chart"/>
 
-    <h1>Violate the type contract (array of strings in Test2)</h1>
-    <ArrayPropsExample1 :test2="[1, 2, 3]"/>
+    <h1>Canonical Vue.js + javascript</h1>
+    <responsive-area-chart-no-class
+      @select="onSelect"
+      :data="data"
+      :ceil="80"
+      class="area-chart"/>
+    <p>currentValue:{{currentValue}}</p>
+    
+    <hr/>
+    <h1>Array Props Examples</h1>
+    <h2>Both specified</h2>
+    <ArrayPropsExample2 test1="Overrided Prop" :test2="['o', 'v', 'e']"/>
+    
+    <h2>Test1 (string) specified</h2>
+    <ArrayPropsExample2 test1="Overrided Prop"/>
+    
+    <h2>Test2(Array) specified</h2>
+    <ArrayPropsExample2 :test2="['o', 'v', 'e']"/>
+    
+    <h2>None specified</h2>
+    <ArrayPropsExample2/>
+
+    <h2>Violate the type contract (array of strings in Test2)</h2>
+    <ArrayPropsExample2 :test2="[1, 2, 3]"/>
     
   </div>
 </template>
@@ -26,24 +43,31 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
+import ArrayPropsExample2 from './components/ArrayPropsExample/ArrayPropsExample2.vue';
 import ResponsiveAreaChart from './components/ResponsiveAreaChart.vue';
-import ArrayPropsExample1 from './components/ArrayPropsExample1.vue';
-// import ArrayPropsExample2 from './components/ArrayPropsExample2.vue';
-// import ArrayPropsExample3 from './components/ArrayPropsExample3.vue';
-// import ArrayPropsExample4 from './components/ArrayPropsExample4.vue';
+import ResponsiveAreaChartNoClass from './components/ResponsiveAreaChartNoClass.vue';
+import generateData from './utility/randomData';
 
 @Component({
   components: {
     HelloWorld,
+    ArrayPropsExample2,
     ResponsiveAreaChart,
-    ArrayPropsExample1,
-    // ArrayPropsExample2,
-    // ArrayPropsExample3,
-    // ArrayPropsExample4
+    ResponsiveAreaChartNoClass
   },
 })
 export default class App extends Vue {
-  // private testArray: string[] = ['a', 'b', 'c'];
+  data: any = [];
+  currentValue: number = 0;
+  onSelect(value) {
+    this.currentValue = value;
+  }
+
+  mounted() {
+    setInterval(() => {
+      this.data = generateData(50, 10, 80);
+    }, 2000);
+  }
 }
 </script>
 
@@ -60,5 +84,9 @@ export default class App extends Vue {
 .logo-img {
   width: 200px;
   height: 200px;
+}
+
+.area-chart {
+  height: 300px
 }
 </style>

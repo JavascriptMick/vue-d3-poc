@@ -5,6 +5,7 @@
 <script lang="ts">
 // following the pattern from this egghead video
 // https://egghead.io/lessons/vue-js-use-properties-in-vue-components-using-prop-decorator-with-typescript
+// seems unnecessarily convoluted to me and breaks everything up.
 
 import Vue from 'vue';
 import Component from 'vue-class-component';

@@ -19,7 +19,7 @@ export default class ArrayPropsExample2 extends Vue {
   test2: string[];
 
   get computedMessage() {
-    return this.test1 + ' ' + this.test2;
+    return `${this.test1} ${this.test2} length=${this.test2.length}` ;
   }
 }
 </script>

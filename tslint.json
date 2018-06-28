@@ -17,6 +17,7 @@
     "max-classes-per-file": [true, 2],
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
-    "trailing-comma": [true, {"multiline": "ignore", "singleline": "ignore"}]
+    "trailing-comma": [true, {"multiline": "ignore", "singleline": "ignore"}],
+    "member-ordering": false
   }
 }

@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+// this is a decent approach but I like the vue-property-decorator more.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
